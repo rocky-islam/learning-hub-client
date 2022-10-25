@@ -6,38 +6,44 @@ import Home from './components/Home/Home';
 import FAQ from './components/FAQ/FAQ';
 import Main from './layout/Main/Main';
 import Error from './components/Error/Error';
+import CourseDetails from './components/CourseDetails/CourseDetails';
 
 function App() {
 
   const router = createBrowserRouter([
     {
-      path: '/',
+      path: "/",
       element: <Main></Main>,
       children: [
         {
-          path: '/',
-          element: <Home></Home>
+          path: "/",
+          element: <Home></Home>,
         },
         {
-          path: '/courses',
-          element:<Courses></Courses>
+          path: "/courses",
+          element: <Courses></Courses>,
+          loader: () => fetch("http://localhost:5000/data"),
         },
         {
-          path: '/faq',
-          element: <FAQ></FAQ>
+          path: "/courses/:id",
+          element: <CourseDetails></CourseDetails>,
+          loader: ({params}) => fetch(`http://localhost:5000/data/courses/${params.id}`),
         },
         {
-          path: '/blog',
-          element: <Blog></Blog>
-        }
-      ]
-      
+          path: "/faq",
+          element: <FAQ></FAQ>,
+        },
+        {
+          path: "/blog",
+          element: <Blog></Blog>,
+        },
+      ],
     },
     {
-      path: '*',
-      element:<Error></Error>
-    }
-  ])
+      path: "*",
+      element: <Error></Error>,
+    },
+  ]);
 
   return (
     <div>
