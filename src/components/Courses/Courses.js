@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Link, useLoaderData } from 'react-router-dom';
 import Card from "react-bootstrap/Card";
+import {  FaStar, FaUserGraduate } from "react-icons/fa";
 
 const Courses = () => {
     const courseData = useLoaderData();
@@ -19,21 +20,35 @@ const Courses = () => {
                 ))}
               </Col>
               <Col md="8">
-                {" "}
                 {courseData.map((course) => (
                   <div>
                     <Link to={`${course.id}`}>
                       <Card className="bg-dark text-white mb-4">
                         <Card.Img src={course.img} alt="Card image" />
-                        <Card.ImgOverlay style={{backgroundColor: 'rgba(0,0,0,0.6)'}}>
-                          <Card.Title className='gray'>{course.name}</Card.Title>
-                          <Card.Text>
-                            This is a wider card with supporting text below as a
-                            natural lead-in to additional content. This content
-                            is a little bit longer.
-                          </Card.Text>
-                          <Card.Text>Last updated 3 mins ago</Card.Text>
+                        <Card.ImgOverlay
+                          style={{ backgroundColor: "rgba(0,0,0,0.6)" }}
+                        >
+                          <Card.Title>
+                            <h2 className="fs-1 text-uppercase">{course.name}</h2>
+                          </Card.Title>
+                          <Card.Text>{course.note}</Card.Text>
+                          <Card.Text><p className='fs-4 text-uppercase'>Instructor: {course.instructor}</p></Card.Text>
+                          <Card.Text>Click for more details</Card.Text>
                         </Card.ImgOverlay>
+                        <Card.Footer className='d-flex justify-content-between '>
+                          <div className='d-flex align-items-center'>
+                            <p className='text-warning me-2'>
+                                <FaStar></FaStar>
+                            </p>
+                            <p>{course.rating}</p>
+                          </div>
+                          <div className='d-flex'>
+                            <p className='me-1'>
+                                <FaUserGraduate></FaUserGraduate>
+                            </p>
+                            <p>{course.student}</p>
+                          </div>
+                        </Card.Footer>
                       </Card>
                     </Link>
                   </div>
