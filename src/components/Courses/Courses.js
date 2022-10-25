@@ -14,14 +14,14 @@ const Courses = () => {
             <Row>
               <Col md="4">
                 {courseData.map((course) => (
-                  <div>
-                    <Link to={`${course.id}`}>{course.name}</Link>
+                  <div key={course.id} >
+                    <Link  to={`${course.id}`}>{course.name}</Link>
                   </div>
                 ))}
               </Col>
               <Col md="8">
                 {courseData.map((course) => (
-                  <div>
+                  <div key={course.id}>
                     <Link to={`${course.id}`}>
                       <Card className="bg-dark text-white mb-4">
                         <Card.Img src={course.img} alt="Card image" />

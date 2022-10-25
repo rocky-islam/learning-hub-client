@@ -7,6 +7,8 @@ import FAQ from './components/FAQ/FAQ';
 import Main from './layout/Main/Main';
 import Error from './components/Error/Error';
 import CourseDetails from './components/CourseDetails/CourseDetails';
+import Login from './components/Login/Login';
+import Register from './components/Register/Register';
 
 function App() {
 
@@ -37,6 +39,14 @@ function App() {
           path: "/blog",
           element: <Blog></Blog>,
         },
+        {
+          path: '/login',
+          element: <Login></Login>
+        },
+        {
+          path: '/register',
+          element: <Register></Register>
+        }
       ],
     },
     {
