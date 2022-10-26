@@ -9,8 +9,8 @@ import { FaStar, FaUserGraduate } from 'react-icons/fa';
 
 const CourseDetails = () => {
     const courseDetails= useLoaderData();
-    console.log(courseDetails);
-    const {name, img, instructor, price, rating, student, course_dsc} = courseDetails;
+    // console.log(courseDetails);
+    const {id, name, img, instructor, price, rating, student, course_dsc} = courseDetails;
     
     return (
       <div>
@@ -38,7 +38,7 @@ const CourseDetails = () => {
                   </Card.Text>
                   <Card.Text>{course_dsc}</Card.Text>
                 </Card.Body>
-                <Link to='/proceed'>Proceed</Link>
+                <Link to={`/proceed/${id}`}>Proceed</Link>
               </Card>
             </Col>
           </Row>

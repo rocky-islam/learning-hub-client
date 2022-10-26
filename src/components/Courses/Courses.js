@@ -10,6 +10,9 @@ const Courses = () => {
     return (
       <div>
         <div className="my-4">
+          <div className='text-center my-4'>
+            <h2>Explore Your Course</h2>
+          </div>
           <Container>
             <Row>
               <Col md="3">

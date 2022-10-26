@@ -60,12 +60,14 @@ function App() {
           element: <Register></Register>,
         },
         {
-          path: "/proceed",
+          path: "/proceed/:id",
           element: (
             <PrivateRoute>
               <Proceed></Proceed>
             </PrivateRoute>
           ),
+          loader: ({ params }) =>
+            fetch(`http://localhost:5000/data/courses/${params.id}`),
         },
       ],
     },

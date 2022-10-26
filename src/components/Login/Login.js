@@ -2,7 +2,7 @@ import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
 
 const Login = () => {
@@ -62,7 +62,7 @@ const Login = () => {
   return (
     <div>
       <h2 className="text-center m-4">Login Here</h2>
-      <div className="w-50 mx-auto">
+      <div className="w-50 mx-auto bg-info p-4 rounded">
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
@@ -83,14 +83,14 @@ const Login = () => {
               required
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Check me out" />
-          </Form.Group>
           <Button variant="primary" type="submit">
             Login
           </Button>
           <Form.Text className="text-danger d-block">
             <p>{error}</p>
+          </Form.Text>
+          <Form.Text className="fw-semibold d-block">
+            <p>Click Here for <Link to='/register'>Register</Link></p>
           </Form.Text>
         </Form>
         <div className="my-4">
