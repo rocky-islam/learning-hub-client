@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -38,6 +38,7 @@ const CourseDetails = () => {
                   </Card.Text>
                   <Card.Text>{course_dsc}</Card.Text>
                 </Card.Body>
+                <Link to='/proceed'>Proceed</Link>
               </Card>
             </Col>
           </Row>

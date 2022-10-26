@@ -1,11 +1,13 @@
 import { GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const Login = () => {
+  const [error, setError] = useState('');
+
     const { providerLogin, signIn } = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -22,10 +24,14 @@ const Login = () => {
             const user = result.user;
             console.log(user);
             form.reset();
+            setError('');
             navigate('/courses');
             
         })
-        .catch(error => console.error(error));
+        .catch(error => {
+          console.error(error);
+          setError(error.message);
+        });
         
     }
 
@@ -71,7 +77,7 @@ const Login = () => {
               Login
             </Button>
             <Form.Text className="text-danger d-block">
-              We'll never share your email with anyone else.
+              <p>{error}</p>
             </Form.Text>
           </Form>
           <div className="my-4">

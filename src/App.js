@@ -9,6 +9,8 @@ import Error from './components/Error/Error';
 import CourseDetails from './components/CourseDetails/CourseDetails';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
+import Proceed from './components/Proceed/Proceed';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 function App() {
 
@@ -46,6 +48,10 @@ function App() {
         {
           path: '/register',
           element: <Register></Register>
+        },
+        {
+          path: '/proceed',
+          element: <PrivateRoute><Proceed></Proceed></PrivateRoute>
         }
       ],
     },
