@@ -22,7 +22,7 @@ const CourseDetails = () => {
                 <span className="text-success">{name}</span>
               </h2>
             </div>
-            <Col md="8">
+            <Col>
               <Card>
                 <Card.Img variant="top" src={img} />
                 <Card.Body>

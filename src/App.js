@@ -11,6 +11,7 @@ import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Proceed from './components/Proceed/Proceed';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import AllCourse from './components/AllCourse/AllCourse';
 
 function App() {
 
@@ -27,12 +28,21 @@ function App() {
           path: "/courses",
           element: <Courses></Courses>,
           loader: () => fetch("http://localhost:5000/data"),
+          children: [
+            {
+              path: "/courses",
+              loader: () => fetch("http://localhost:5000/data"),
+              element: <AllCourse></AllCourse>,
+            },
+            {
+              path: ":id",
+              element: <CourseDetails></CourseDetails>,
+              loader: ({ params }) =>
+                fetch(`http://localhost:5000/data/courses/${params.id}`),
+            },
+          ],
         },
-        {
-          path: "/courses/:id",
-          element: <CourseDetails></CourseDetails>,
-          loader: ({params}) => fetch(`http://localhost:5000/data/courses/${params.id}`),
-        },
+
         {
           path: "/faq",
           element: <FAQ></FAQ>,
@@ -42,17 +52,21 @@ function App() {
           element: <Blog></Blog>,
         },
         {
-          path: '/login',
-          element: <Login></Login>
+          path: "/login",
+          element: <Login></Login>,
         },
         {
-          path: '/register',
-          element: <Register></Register>
+          path: "/register",
+          element: <Register></Register>,
         },
         {
-          path: '/proceed',
-          element: <PrivateRoute><Proceed></Proceed></PrivateRoute>
-        }
+          path: "/proceed",
+          element: (
+            <PrivateRoute>
+              <Proceed></Proceed>
+            </PrivateRoute>
+          ),
+        },
       ],
     },
     {
