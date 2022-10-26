@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -6,10 +6,16 @@ import { Link } from 'react-router-dom';
 import './Header.css'
 import brand from '../../image/brandImg.png'
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
-import { Image } from 'react-bootstrap';
+import { Form, Image, Tooltip } from 'react-bootstrap';
 import { FaUserAlt } from 'react-icons/fa';
+import Button from "react-bootstrap/Button";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
 const Header = () => {
+    // toggle btn
+    const [open, setOpen] = useState(true);
+    
+    // toggle btn
 
     const { user, logOut } = useContext(AuthContext);
 
@@ -62,7 +68,23 @@ const Header = () => {
                 <Nav.Link eventKey={2}>
                     {
                         user?.photoURL ?
-                        <Image style={{height:'30px'}} roundedCircle src={user?.photoURL}></Image>
+                        // <Image style={{height:'30px'}} roundedCircle src={user?.photoURL}></Image>
+                        <OverlayTrigger
+                            placement="bottom"
+                            overlay={<Tooltip id="button-tooltip-2">{user?.displayName}</Tooltip>}
+                            >
+                            {({ ref, ...triggerHandler }) => (
+                                <Nav
+                                    {...triggerHandler}
+                                    className="d-inline-flex align-items-center"
+                                    >
+                                    <Image
+                                        ref={ref}
+                                        roundedCircle
+                                        src={user?.photoURL} style={{height:'40px'}}/>
+                                </Nav>
+                            )}
+                        </OverlayTrigger>
                         : <FaUserAlt></FaUserAlt>
                     }
                 </Nav.Link>
@@ -72,6 +94,22 @@ const Header = () => {
                 <Nav.Link>
                     <Link className='nav-color' to='/register'>Register</Link>
                 </Nav.Link> */}
+                <Nav.Link className={open ? 'd-none' : 'd-block'}>
+                    night
+                </Nav.Link>
+                    <Nav className='align-items-md-center ms-2'>
+                    <Form className='text-white'>
+                        <Form.Check 
+                        onClick={()=>setOpen(!open)}
+                        type="switch"
+                        id="custom-switch"
+                        label="Change Theme"
+                        />
+                    </Form>
+                    </Nav>
+                {/* tooltip */}
+                
+                {/* tooltip */}
             </Nav>
             </Navbar.Collapse>
         </Container>
