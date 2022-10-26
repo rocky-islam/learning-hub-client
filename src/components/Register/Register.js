@@ -5,7 +5,8 @@ import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const Register = () => {
   const [error, setError] = useState('');
-    const { createUser } = useContext(AuthContext);
+  const [accepted, setAccepted] = useState(false);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
 
     const handleSubmit= (event) =>{
         event.preventDefault();
@@ -22,6 +23,7 @@ const Register = () => {
             console.log(user);
             setError('');
             form.reset();
+            handleUpdateUserProfile(name, photoURL);
             
         })
         .catch(error => {
@@ -29,6 +31,22 @@ const Register = () => {
           setError(error.message);
         })
     }
+
+    const handleUpdateUserProfile = (name, photoURL) =>{
+      const profile = {
+        displayName: name,
+        photoURL: photoURL
+      }
+      updateUserProfile(profile)
+      .then(() =>{})
+      .catch(error => console.error(error))
+    }
+
+    const handleAccepted = (event) =>{
+        setAccepted(event.target.checked);
+        
+    }
+
     return (
       <div>
         <h2 className="text-center m-4"> Welcome  </h2>
@@ -69,9 +87,13 @@ const Register = () => {
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              <Form.Check type="checkbox" label="Check me out" />
+              <Form.Check 
+              type="checkbox" 
+              onClick={handleAccepted}
+              label="Accept Terms and Condition" 
+              />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" disabled={!accepted}>
               Register
             </Button>
             <Form.Text className="text-danger d-block">

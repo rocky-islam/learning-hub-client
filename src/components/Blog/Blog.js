@@ -1,9 +1,14 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
 
 const Blog = () => {
     return (
         <div>
-            this is blog
+            <Container>
+                <div>
+                    <p></p>
+                </div>
+            </Container>
         </div>
     );
 };
