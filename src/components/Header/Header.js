@@ -88,12 +88,6 @@ const Header = () => {
                         : <FaUserAlt></FaUserAlt>
                     }
                 </Nav.Link>
-                {/* <Nav.Link>
-                    <Link className='nav-color' to='/login'>Login</Link>
-                </Nav.Link>
-                <Nav.Link>
-                    <Link className='nav-color' to='/register'>Register</Link>
-                </Nav.Link> */}
                 <Nav.Link className={open ? 'd-none' : 'd-block'}>
                     night
                 </Nav.Link>
@@ -114,7 +108,7 @@ const Header = () => {
             </Navbar.Collapse>
         </Container>
         </Navbar>
-      </div>
+    </div>
     );
 };
 
