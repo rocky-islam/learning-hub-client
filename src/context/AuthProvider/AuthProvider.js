@@ -8,25 +8,30 @@ const auth = getAuth(app);
 
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     // google Sign in
     const providerLogin = (provider) =>{
+        setLoading(true);
         return signInWithPopup(auth, provider);
     }
 
     // email password create user
     const createUser =(email, password) =>{
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
     // email password sign in
     const signIn = (email, password) =>{
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
 
 
     // log out
     const logOut = () =>{
+        setLoading(true);
         return signOut(auth);
     }
 
@@ -35,6 +40,7 @@ const AuthProvider = ({children}) => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) =>{
             console.log('user inside state', currentUser);
             setUser(currentUser);
+            setLoading(false);
             
         });
         return () => {
@@ -42,7 +48,7 @@ const AuthProvider = ({children}) => {
         }
     },[])
 
-    const authInfo = {user, providerLogin, createUser, signIn, logOut};
+    const authInfo = {user, loading, providerLogin, createUser, signIn, logOut};
     return (
         <div>
             <AuthContext.Provider value={authInfo}>
