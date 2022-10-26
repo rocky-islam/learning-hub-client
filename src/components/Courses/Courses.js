@@ -1,8 +1,8 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Link, Outlet, useLoaderData } from 'react-router-dom';
-import Card from "react-bootstrap/Card";
-import {  FaStar, FaUserGraduate } from "react-icons/fa";
+
+
 
 const Courses = () => {
     const courseData = useLoaderData();

@@ -26,6 +26,11 @@ const CourseDetails = () => {
               <Card>
                 <Card.Img variant="top" src={img} />
                 <Card.Body>
+                  <div className='text-center'>
+                    <button className='btn btn-info'>
+                      <Link className='text-dark' to={`/proceed/${id}`}>Get Premium Access</Link>
+                    </button>
+                  </div>
                   <Card.Text>
                     <div className='d-md-flex justify-content-between'>
                         <p className='fw-semibold fs-5'>Instructor: {instructor}</p>
@@ -38,7 +43,7 @@ const CourseDetails = () => {
                   </Card.Text>
                   <Card.Text>{course_dsc}</Card.Text>
                 </Card.Body>
-                <Link to={`/proceed/${id}`}>Proceed</Link>
+                <Link className='btn btn-info' to={`/proceed/${id}`}>Get Premium Access</Link>
               </Card>
             </Col>
           </Row>

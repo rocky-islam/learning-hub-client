@@ -1,5 +1,4 @@
 import React from 'react';
-import {AiOutlineExclamationCircle} from 'react-icons/ai'
 import { BsEmojiFrown } from 'react-icons/bs'
 import { Link } from 'react-router-dom';
 
