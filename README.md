@@ -1,4 +1,30 @@
-# Getting Started with Create React App
+# Learning-Hub
+
+## Developer: Md. Rocky islam
+
+#### Live Site Link: [Learning-hub](https://learning-hub-c9bd5.web.app/ "Learning-hub") and https://learning-hub-c9bd5.web.app/
+
+### Features and functionality
+
+- Firebase authentication
+- Server side
+- Clickable Course
+- Premium access page
+- pdf downloader
+- Responsive design
+- Toggle button for changing theme
+- Privet route
+
+### Technologies
+
+- React js
+- React Bootstrap
+- Bootstrap
+- React icon
+- React Router Dom
+- Firebase
+- React pdf
+- sweetAlert2
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
