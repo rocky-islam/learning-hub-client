@@ -25,7 +25,7 @@ const Proceed = () => {
       <div className="text-center">
         <h2> Check out Page</h2>
         <div className="m-4">
-          <img className="" src={user?.photoURL} alt="" height="220px" />
+          <img className="img-fluid" src={user?.photoURL} alt="" height="220px" />
           <h3>Hello {user?.displayName}</h3>
         </div>
         <div className="m-4">
