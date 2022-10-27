@@ -8,7 +8,6 @@ import brand from '../../image/brandImg.png'
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import { Form, Image, Tooltip } from 'react-bootstrap';
 import { FaUserAlt } from 'react-icons/fa';
-import Button from "react-bootstrap/Button";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
 const Header = () => {
